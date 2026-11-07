@@ -51,6 +51,14 @@
         "pending": 0
       }
     },
-    "poster": "samples/freezer-room/scene.png"
+    "poster": "samples/freezer-room/scene.png",
+    "input": {
+      "image": "samples/freezer-room/input.jpg",
+      "size_px": [
+        1831,
+        729
+      ],
+      "note": ""
+    }
   }
 }

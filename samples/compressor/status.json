@@ -55,6 +55,14 @@
         "pending": 0
       }
     },
-    "poster": "samples/compressor/scene.png"
+    "poster": "samples/compressor/scene.png",
+    "input": {
+      "image": "samples/compressor/input.jpg",
+      "size_px": [
+        1462,
+        882
+      ],
+      "note": ""
+    }
   }
 }

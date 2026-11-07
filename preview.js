@@ -20,11 +20,11 @@ const submitPhoto = byId('submit-photo');
 const initialOrbit = '34deg 61deg auto';
 const stateNames = {waiting: '等待任务', running: '处理中', ready: '复核通过', attention: '待处理', offline: '连接中断'};
 const stepNames = {pending: '待开始', active: '进行中', done: '已完成', reused: '已复用', attention: '待处理'};
-const layerNames = {noise: '潜在噪声点', retrofit: '拟改造位置'};
+const layerNames = {input: '输入照片', noise: '潜在噪声点', retrofit: '拟改造位置'};
 const numberFormat = new Intl.NumberFormat('zh-CN', {maximumFractionDigits: 1});
 
 let result = null;
-let layer = 'noise';
+let layer = null;
 let modelSource = '';
 let workflowKey = '';
 let catalog;
@@ -126,12 +126,23 @@ function showModel(data) {
   setText(byId('model-info'), metadata.join(' · '));
 }
 
+function activeLayer() {
+  if (result?.input) return layer || 'input';
+  return layer && layer !== 'input' ? layer : 'noise';
+}
+
+function layerData(kind) {
+  return kind === 'input' ? result?.input : result?.layers[kind];
+}
+
 function showLayer() {
-  const data = result?.layers[layer];
-  const title = layerNames[layer];
-  byId('layer-panel').setAttribute('aria-labelledby', `tab-${layer}`);
+  const kind = activeLayer();
+  const data = layerData(kind);
+  const title = layerNames[kind];
+  byId('layer-panel').setAttribute('aria-labelledby', `tab-${kind}`);
   for (const tab of layerTabs) {
-    const active = tab.dataset.kind === layer;
+    tab.hidden = tab.dataset.kind === 'input' && !result?.input;
+    const active = tab.dataset.kind === kind;
     tab.setAttribute('aria-selected', String(active));
     tab.tabIndex = active ? 0 : -1;
   }
@@ -143,10 +154,18 @@ function showLayer() {
     return;
   }
   if (layerImage.getAttribute('src') !== data.image) layerImage.src = data.image;
-  layerImage.alt = `整景渲染中的${title}箭头标注`;
   imageDownload.href = data.image;
-  imageDownload.download = `${title}.png`;
-  setText(byId('image-info'), `${data.placed} 处已标记${data.pending ? ` · ${data.pending} 处待定位` : ''}`);
+  if (kind === 'input') {
+    layerImage.alt = `${byId('project-title').textContent}的建模输入照片`;
+    imageDownload.download = `输入照片.${data.image.split('.').pop()}`;
+    setText(imageDownload, '下载输入');
+    setText(byId('image-info'), `${data.size_px.join(' × ')} px${data.note ? ` · ${data.note}` : ' · 实际建模输入'}`);
+  } else {
+    layerImage.alt = `整景渲染中的${title}箭头标注`;
+    imageDownload.download = `${title}.png`;
+    setText(imageDownload, '下载 PNG');
+    setText(byId('image-info'), `${data.placed} 处已标记${data.pending ? ` · ${data.pending} 处待定位` : ''}`);
+  }
 }
 
 for (const tab of layerTabs) {
@@ -155,11 +174,15 @@ for (const tab of layerTabs) {
     showLayer();
   });
   tab.addEventListener('keydown', event => {
-    const nextIndex = {ArrowLeft: 1 - layerTabs.indexOf(tab), ArrowRight: 1 - layerTabs.indexOf(tab), Home: 0, End: 1}[event.key];
+    const visible = layerTabs.filter(item => !item.hidden);
+    const index = visible.indexOf(tab);
+    const last = visible.length - 1;
+    const nextIndex = {ArrowLeft: index ? index - 1 : last, ArrowRight: index === last ? 0 : index + 1,
+      Home: 0, End: last}[event.key];
     if (nextIndex === undefined) return;
     event.preventDefault();
-    layerTabs[nextIndex].click();
-    layerTabs[nextIndex].focus();
+    visible[nextIndex].click();
+    visible[nextIndex].focus();
   });
 }
 
@@ -179,12 +202,13 @@ modelReset.addEventListener('click', () => {
 });
 
 imageOpen.addEventListener('click', () => {
-  const data = result?.layers[layer];
+  const kind = activeLayer();
+  const data = layerData(kind);
   if (!data) return;
   const largeImage = byId('large-image');
   largeImage.src = data.image;
   largeImage.alt = layerImage.alt;
-  setText(byId('dialog-title'), layerNames[layer]);
+  setText(byId('dialog-title'), layerNames[kind]);
   imageDialog.showModal();
 });
 byId('close-image').addEventListener('click', () => imageDialog.close());
@@ -260,7 +284,7 @@ function showCases() {
 
 async function readStatus(url, version, live) {
   try {
-    const response = await fetch(url, {cache: live ? 'no-store' : 'default', signal: AbortSignal.timeout(8000)});
+    const response = await fetch(url, {cache: live ? 'no-store' : 'no-cache', signal: AbortSignal.timeout(8000)});
     if (version !== selectionVersion) return;
     if (response.status === 404 && live) {
       showStatus('attention', '找不到这个任务。请检查链接，或从场景样例返回。');
@@ -297,7 +321,7 @@ function selectScene() {
     else link.removeAttribute('aria-current');
   }
   result = null;
-  layer = 'noise';
+  layer = null;
   workflowKey = '';
   steps.replaceChildren();
   byId('round-history').hidden = true;

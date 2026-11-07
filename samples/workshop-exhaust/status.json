@@ -55,6 +55,14 @@
         "pending": 0
       }
     },
-    "poster": "samples/workshop-exhaust/scene.png"
+    "poster": "samples/workshop-exhaust/scene.png",
+    "input": {
+      "image": "samples/workshop-exhaust/input.png",
+      "size_px": [
+        3024,
+        2337
+      ],
+      "note": "顺时针旋转 90° 后送入建模"
+    }
   }
 }

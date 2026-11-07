@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f6f7">
   <title>场景预览 · 汇千流</title>
-  <link rel="stylesheet" href="./preview.css">
+  <link rel="stylesheet" href="./preview.css?v=2">
   <script type="module" src="./model-viewer-4.1.0.min.js"></script>
-  <script type="module" src="./preview.js"></script>
+  <script type="module" src="./preview.js?v=2"></script>
 </head>
 <body>
   <header class="topbar">
@@ -43,7 +43,7 @@
       <div>
         <p class="eyebrow">噪声治理 · 现场建模</p>
         <h1 id="project-title">设备工作区</h1>
-        <p class="subtitle">查看整景模型和拟治理位置。</p>
+        <p class="subtitle">对照现场输入、整景模型与拟治理位置。</p>
       </div>
       <span class="badge" id="run-badge" data-state="waiting">等待任务</span>
     </div>
@@ -90,12 +90,13 @@
       <section class="card result-card" aria-labelledby="image-title">
         <div class="card-head result-head">
           <div>
-            <p class="card-tag">2D MARKUP</p>
-            <h2 id="image-title">噪声与改造示意</h2>
+            <p class="card-tag">FIELD VIEW</p>
+            <h2 id="image-title">现场照片与标注</h2>
           </div>
           <button class="button outline" id="open-image" type="button" hidden>查看大图</button>
         </div>
-        <div class="layer-tabs" role="tablist" aria-label="标注图层">
+        <div class="layer-tabs" role="tablist" aria-label="照片与标注图层">
+          <button class="layer-tab" type="button" id="tab-input" role="tab" aria-selected="false" aria-controls="layer-panel" tabindex="-1" data-kind="input" hidden>输入照片</button>
           <button class="layer-tab" type="button" id="tab-noise" role="tab" aria-selected="true" aria-controls="layer-panel" data-kind="noise">潜在噪声点</button>
           <button class="layer-tab" type="button" id="tab-retrofit" role="tab" aria-selected="false" aria-controls="layer-panel" tabindex="-1" data-kind="retrofit">拟改造位置</button>
         </div>
@@ -115,7 +116,7 @@
 
   <dialog id="image-dialog" aria-labelledby="dialog-title">
     <div class="dialog-head">
-      <h2 id="dialog-title">标注示意图</h2>
+      <h2 id="dialog-title">场景图片</h2>
       <button class="button outline" id="close-image" type="button" autofocus>关闭</button>
     </div>
     <img id="large-image" alt="" />

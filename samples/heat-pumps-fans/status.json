@@ -59,6 +59,14 @@
         "pending": 2
       }
     },
-    "poster": "samples/heat-pumps-fans/scene.png"
+    "poster": "samples/heat-pumps-fans/scene.png",
+    "input": {
+      "image": "samples/heat-pumps-fans/input.jpg",
+      "size_px": [
+        3762,
+        2416
+      ],
+      "note": ""
+    }
   }
 }

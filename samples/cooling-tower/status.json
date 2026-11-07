@@ -55,6 +55,14 @@
     "reduction": {
       "before": 1408196,
       "after": 179998
+    },
+    "input": {
+      "image": "samples/cooling-tower/input.jpg",
+      "size_px": [
+        810,
+        648
+      ],
+      "note": ""
     }
   }
 }

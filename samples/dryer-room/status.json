@@ -51,6 +51,14 @@
         "pending": 1
       }
     },
-    "poster": "samples/dryer-room/scene.png"
+    "poster": "samples/dryer-room/scene.png",
+    "input": {
+      "image": "samples/dryer-room/input.jpg",
+      "size_px": [
+        774,
+        620
+      ],
+      "note": ""
+    }
   }
 }
