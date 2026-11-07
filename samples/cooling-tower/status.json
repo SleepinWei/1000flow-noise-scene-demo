@@ -1,0 +1,60 @@
+{
+  "title": "冷却塔",
+  "state": "ready",
+  "message": "整景已通过视觉复核",
+  "steps": [
+    {
+      "label": "现场识别",
+      "state": "reused"
+    },
+    {
+      "label": "布局规划",
+      "state": "reused"
+    },
+    {
+      "label": "准备构件",
+      "state": "reused"
+    },
+    {
+      "label": "组装渲染",
+      "state": "done"
+    },
+    {
+      "label": "视觉复核",
+      "state": "done"
+    },
+    {
+      "label": "成果预览",
+      "state": "done"
+    }
+  ],
+  "round": 1,
+  "history": [
+    {
+      "round": 1,
+      "label": "复核通过"
+    }
+  ],
+  "result": {
+    "model": "samples/cooling-tower/scene.glb",
+    "bytes": 8304016,
+    "meshes": 53,
+    "layers": {
+      "noise": {
+        "image": "samples/cooling-tower/noise.png",
+        "placed": 1,
+        "pending": 1
+      },
+      "retrofit": {
+        "image": "samples/cooling-tower/retrofit.png",
+        "placed": 2,
+        "pending": 2
+      }
+    },
+    "poster": "samples/cooling-tower/scene.png",
+    "reduction": {
+      "before": 1408196,
+      "after": 179998
+    }
+  }
+}

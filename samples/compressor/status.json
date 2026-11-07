@@ -1,0 +1,60 @@
+{
+  "title": "空压机房",
+  "state": "ready",
+  "message": "整景已通过视觉复核",
+  "steps": [
+    {
+      "label": "现场识别",
+      "state": "done"
+    },
+    {
+      "label": "布局规划",
+      "state": "done"
+    },
+    {
+      "label": "准备构件",
+      "state": "done"
+    },
+    {
+      "label": "组装渲染",
+      "state": "done"
+    },
+    {
+      "label": "视觉复核",
+      "state": "done"
+    },
+    {
+      "label": "成果预览",
+      "state": "done"
+    }
+  ],
+  "round": 2,
+  "history": [
+    {
+      "round": 1,
+      "label": "调整布局"
+    },
+    {
+      "round": 2,
+      "label": "复核通过"
+    }
+  ],
+  "result": {
+    "model": "samples/compressor/scene.glb",
+    "bytes": 3381480,
+    "meshes": 26,
+    "layers": {
+      "noise": {
+        "image": "samples/compressor/noise.png",
+        "placed": 4,
+        "pending": 0
+      },
+      "retrofit": {
+        "image": "samples/compressor/retrofit.png",
+        "placed": 4,
+        "pending": 0
+      }
+    },
+    "poster": "samples/compressor/scene.png"
+  }
+}

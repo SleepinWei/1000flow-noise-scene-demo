@@ -1,0 +1,36 @@
+{
+  "mode": "samples",
+  "default_scene": "cooling-tower",
+  "scenes": [
+    {
+      "id": "dryer-room",
+      "title": "冷干机房",
+      "status": "samples/dryer-room/status.json"
+    },
+    {
+      "id": "compressor",
+      "title": "空压机房",
+      "status": "samples/compressor/status.json"
+    },
+    {
+      "id": "freezer-room",
+      "title": "二楼冷冻机房",
+      "status": "samples/freezer-room/status.json"
+    },
+    {
+      "id": "cooling-tower",
+      "title": "冷却塔",
+      "status": "samples/cooling-tower/status.json"
+    },
+    {
+      "id": "heat-pumps-fans",
+      "title": "热泵与二层风机",
+      "status": "samples/heat-pumps-fans/status.json"
+    },
+    {
+      "id": "workshop-exhaust",
+      "title": "车间排风口",
+      "status": "samples/workshop-exhaust/status.json"
+    }
+  ]
+}

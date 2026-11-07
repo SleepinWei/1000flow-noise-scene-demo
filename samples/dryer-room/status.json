@@ -1,0 +1,56 @@
+{
+  "title": "冷干机房",
+  "state": "ready",
+  "message": "整景已通过视觉复核",
+  "steps": [
+    {
+      "label": "现场识别",
+      "state": "reused"
+    },
+    {
+      "label": "布局规划",
+      "state": "reused"
+    },
+    {
+      "label": "准备构件",
+      "state": "reused"
+    },
+    {
+      "label": "组装渲染",
+      "state": "done"
+    },
+    {
+      "label": "视觉复核",
+      "state": "done"
+    },
+    {
+      "label": "成果预览",
+      "state": "done"
+    }
+  ],
+  "round": 1,
+  "history": [
+    {
+      "round": 1,
+      "label": "复核通过"
+    }
+  ],
+  "result": {
+    "model": "samples/dryer-room/scene.glb",
+    "bytes": 40530812,
+    "meshes": 80,
+    "layers": {
+      "noise": {
+        "image": "samples/dryer-room/noise.png",
+        "placed": 3,
+        "pending": 1
+      },
+      "retrofit": {
+        "image": "samples/dryer-room/retrofit.png",
+        "placed": 3,
+        "pending": 1
+      }
+    },
+    "poster": "samples/dryer-room/scene.png"
+  }
+}

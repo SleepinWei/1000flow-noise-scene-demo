@@ -1,0 +1,60 @@
+{
+  "title": "车间排风口",
+  "state": "ready",
+  "message": "整景已通过视觉复核",
+  "steps": [
+    {
+      "label": "现场识别",
+      "state": "done"
+    },
+    {
+      "label": "布局规划",
+      "state": "done"
+    },
+    {
+      "label": "准备构件",
+      "state": "done"
+    },
+    {
+      "label": "组装渲染",
+      "state": "done"
+    },
+    {
+      "label": "视觉复核",
+      "state": "done"
+    },
+    {
+      "label": "成果预览",
+      "state": "done"
+    }
+  ],
+  "round": 2,
+  "history": [
+    {
+      "round": 1,
+      "label": "需要修订"
+    },
+    {
+      "round": 2,
+      "label": "复核通过"
+    }
+  ],
+  "result": {
+    "model": "samples/workshop-exhaust/scene.glb",
+    "bytes": 167388,
+    "meshes": 22,
+    "layers": {
+      "noise": {
+        "image": "samples/workshop-exhaust/noise.png",
+        "placed": 2,
+        "pending": 0
+      },
+      "retrofit": {
+        "image": "samples/workshop-exhaust/retrofit.png",
+        "placed": 2,
+        "pending": 0
+      }
+    },
+    "poster": "samples/workshop-exhaust/scene.png"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "title": "热泵与二层风机",
+  "state": "ready",
+  "message": "整景已通过视觉复核",
+  "steps": [
+    {
+      "label": "现场识别",
+      "state": "done"
+    },
+    {
+      "label": "布局规划",
+      "state": "done"
+    },
+    {
+      "label": "准备构件",
+      "state": "done"
+    },
+    {
+      "label": "组装渲染",
+      "state": "done"
+    },
+    {
+      "label": "视觉复核",
+      "state": "done"
+    },
+    {
+      "label": "成果预览",
+      "state": "done"
+    }
+  ],
+  "round": 3,
+  "history": [
+    {
+      "round": 1,
+      "label": "调整布局"
+    },
+    {
+      "round": 2,
+      "label": "需要修订"
+    },
+    {
+      "round": 3,
+      "label": "复核通过"
+    }
+  ],
+  "result": {
+    "model": "samples/heat-pumps-fans/scene.glb",
+    "bytes": 1200800,
+    "meshes": 45,
+    "layers": {
+      "noise": {
+        "image": "samples/heat-pumps-fans/noise.png",
+        "placed": 2,
+        "pending": 1
+      },
+      "retrofit": {
+        "image": "samples/heat-pumps-fans/retrofit.png",
+        "placed": 2,
+        "pending": 2
+      }
+    },
+    "poster": "samples/heat-pumps-fans/scene.png"
+  }
+}
